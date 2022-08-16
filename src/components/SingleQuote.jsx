@@ -3,9 +3,9 @@ import "./singlequote.css";
 const SingleQuote = (props) => {
   return (
     <div className="single">
-      <p className="single--quote">{props.quote.quote}</p>
+      <p className="single--quote">{'"' + props.quote.quote + '"'}</p>
 
-      <div className="single--extra">
+      <div className="single--extra" onClick={() => props.setAuthorPage(true)}>
         <div className="single--author">{props.quote.author}</div>
         <div className="single--genre">{props.quote.genre}</div>
         <svg

@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import "./app.css";
+import AuthorQuotes from "./components/AuthorQuotes";
 import SingleQuote from "./components/SingleQuote";
 
 function App() {
   const [quote, setQuote] = useState(null);
+  const [authorPage, setAuthorPage] = useState(false);
 
   const randomQuoteHandler = () => {
+    setAuthorPage(false);
     fetchQuoteHandler();
   };
 
@@ -54,7 +57,10 @@ function App() {
 
         <div>random</div>
       </div>
-      <div className="main">{quote && <SingleQuote quote={quote} />}</div>
+      <div className="main">
+        {quote && !authorPage && <SingleQuote quote={quote} setAuthorPage={setAuthorPage}/>}
+        {authorPage && <AuthorQuotes author={quote.author}/>}
+        </div>
 
       <footer>
         created by <a href="https://github.com/bashidagha">bashidagha</a> -

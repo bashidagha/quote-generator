@@ -1,11 +1,43 @@
-import './authorquotes.css'
+import { useEffect, useState } from "react";
+import "./authorquotes.css";
 
+const AuthorQuotes = (props) => {
+  const [quotes, setQuotes] = useState(null);
 
-const AuthorQuotes = () => {
+  const fetchAuthorQuotesHandler = async () => {
+    try {
+      const response = await fetch(
+        `https://quote-garden.herokuapp.com/api/v3/quotes/?author=${props.author}&limit=5`
+      );
+
+      if (!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+
+      const data = await response.json();
+
+      console.log(data);
+
+      setQuotes(data.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => fetchAuthorQuotesHandler, []);
+
   return (
-    <>
-    </>
-  )
-}
+    <div className="multiple">
+      {quotes &&
+        quotes.map((quote) => {
+          return (
+            <div className="multiple--quote">
+              <p>{'"' + quote.quoteText + '"'}</p>
+            </div>
+          );
+        })}
+    </div>
+  );
+};
 
-export default AuthorQuotes
+export default AuthorQuotes;
