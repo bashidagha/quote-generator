@@ -26,7 +26,9 @@ const AuthorQuotes = (props) => {
     }
   };
 
-  useEffect(() => fetchAuthorQuotesHandler(), []);
+  useEffect(() => {
+    fetchAuthorQuotesHandler();
+  }, []);
 
   return (
     <>

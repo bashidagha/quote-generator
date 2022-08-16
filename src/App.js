@@ -42,7 +42,9 @@ function App() {
     }
   };
 
-  useEffect(() => fetchQuoteHandler(), []);
+  useEffect(() => {
+    fetchQuoteHandler();
+  }, []);
 
   return (
     <div className="container">
