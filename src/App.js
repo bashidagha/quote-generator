@@ -6,10 +6,12 @@ import SingleQuote from "./components/SingleQuote";
 function App() {
   const [quote, setQuote] = useState(null);
   const [authorPage, setAuthorPage] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const randomQuoteHandler = () => {
     setAuthorPage(false);
     if (!authorPage) {
+      setIsLoading(true);
       fetchQuoteHandler();
     }
   };
@@ -33,6 +35,7 @@ function App() {
       };
 
       setQuote(receivedQuote);
+      setIsLoading(false)
     } catch (error) {
       console.log(error.message);
     }
@@ -60,7 +63,8 @@ function App() {
         <div>random</div>
       </div>
       <div className="main">
-        {quote && !authorPage && (
+        {isLoading && <p> Loading... Please wait. </p>}
+        {!isLoading && quote && !authorPage && (
           <SingleQuote quote={quote} setAuthorPage={setAuthorPage} />
         )}
         {authorPage && <AuthorQuotes author={quote.author} />}

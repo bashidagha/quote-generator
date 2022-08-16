@@ -3,6 +3,7 @@ import "./authorquotes.css";
 
 const AuthorQuotes = (props) => {
   const [quotes, setQuotes] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchAuthorQuotesHandler = async () => {
     try {
@@ -19,6 +20,7 @@ const AuthorQuotes = (props) => {
       console.log(data);
 
       setQuotes(data.data);
+      setIsLoading(false);
     } catch (error) {
       console.log(error.message);
     }
@@ -27,17 +29,23 @@ const AuthorQuotes = (props) => {
   useEffect(() => fetchAuthorQuotesHandler, []);
 
   return (
-    <div className="multiple">
-      <h2>{props.author}</h2>
-      {quotes &&
-        quotes.map((quote) => {
-          return (
-            <div className="multiple--quote">
-              <p>{'"' + quote.quoteText + '"'}</p>
-            </div>
-          );
-        })}
-    </div>
+    <>
+      {isLoading && <p> Loading... Please wait. </p>}
+
+      {!isLoading && (
+        <div className="multiple">
+          <h2>{props.author}</h2>
+          {quotes &&
+            quotes.map((quote) => {
+              return (
+                <div className="multiple--quote">
+                  <p>{'"' + quote.quoteText + '"'}</p>
+                </div>
+              );
+            })}
+        </div>
+      )}
+    </>
   );
 };
 
