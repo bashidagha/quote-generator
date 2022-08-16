@@ -30,7 +30,7 @@ const AuthorQuotes = (props) => {
 
   return (
     <>
-      {isLoading && <p> Loading... Please wait. </p>}
+      {isLoading && <p className="loading"> Loading... Please wait. </p>}
 
       {!isLoading && (
         <div className="multiple">

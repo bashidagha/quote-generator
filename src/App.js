@@ -63,7 +63,7 @@ function App() {
         <div>random</div>
       </div>
       <div className="main">
-        {isLoading && <p> Loading... Please wait. </p>}
+        {isLoading && <p className="loading"> Loading... Please wait. </p>}
         {!isLoading && quote && !authorPage && (
           <SingleQuote quote={quote} setAuthorPage={setAuthorPage} />
         )}
