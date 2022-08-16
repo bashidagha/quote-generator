@@ -9,10 +9,11 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   const randomQuoteHandler = () => {
-    setAuthorPage(false);
     if (!authorPage) {
       setIsLoading(true);
       fetchQuoteHandler();
+    } else {
+      setAuthorPage(false);
     }
   };
 
@@ -35,7 +36,7 @@ function App() {
       };
 
       setQuote(receivedQuote);
-      setIsLoading(false)
+      setIsLoading(false);
     } catch (error) {
       console.log(error.message);
     }
