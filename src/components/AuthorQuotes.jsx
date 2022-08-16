@@ -28,6 +28,7 @@ const AuthorQuotes = (props) => {
 
   return (
     <div className="multiple">
+      <h2>{props.author}</h2>
       {quotes &&
         quotes.map((quote) => {
           return (

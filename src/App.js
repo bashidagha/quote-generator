@@ -9,7 +9,9 @@ function App() {
 
   const randomQuoteHandler = () => {
     setAuthorPage(false);
-    fetchQuoteHandler();
+    if (!authorPage) {
+      fetchQuoteHandler();
+    }
   };
 
   const fetchQuoteHandler = async () => {
@@ -58,9 +60,11 @@ function App() {
         <div>random</div>
       </div>
       <div className="main">
-        {quote && !authorPage && <SingleQuote quote={quote} setAuthorPage={setAuthorPage}/>}
-        {authorPage && <AuthorQuotes author={quote.author}/>}
-        </div>
+        {quote && !authorPage && (
+          <SingleQuote quote={quote} setAuthorPage={setAuthorPage} />
+        )}
+        {authorPage && <AuthorQuotes author={quote.author} />}
+      </div>
 
       <footer>
         created by <a href="https://github.com/bashidagha">bashidagha</a> -
