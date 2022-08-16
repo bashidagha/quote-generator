@@ -1,0 +1,31 @@
+.single {
+  max-width: 80%;
+}
+
+.single--quote {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 120%;
+  border-left: 8px solid #f7df94;
+  padding-left: 5rem;
+}
+
+.single--extra {
+  padding-left: 5rem;
+}
+
+.single--author {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+
+  color: #4f4f4f;
+}
+
+.single--genre {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+
+  color: #828282;
+}
