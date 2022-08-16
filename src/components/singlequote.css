@@ -1,5 +1,5 @@
 .single {
-  max-width: 80%;
+  max-width: 80rem;
 }
 
 .single--quote {
@@ -7,11 +7,36 @@
   font-size: 36px;
   line-height: 120%;
   border-left: 8px solid #f7df94;
-  padding-left: 5rem;
+  padding-left: 2rem;
 }
 
 .single--extra {
-  padding-left: 5rem;
+  margin-left: 2rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  position: relative;
+}
+
+.single--extra svg{
+    display: none;
+    fill: white;
+    position: absolute;
+    right: 2rem;
+    top: 4rem;
+}
+
+.single--extra:hover{
+    background: #333333;
+    cursor: pointer;
+}
+
+.single--extra:hover .single--author{
+    color: white;
+}
+
+.single--extra:hover svg{
+    display: inline;
+    
 }
 
 .single--author {
@@ -26,6 +51,17 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
-
+  margin-top: 1rem;
   color: #828282;
+}
+
+@media (min-width: 600px) {
+  .single--quote {
+    padding-left: 5rem;
+  }
+
+  .single--extra {
+    margin-left: 5rem;
+    margin-top: 8rem;
+  }
 }
